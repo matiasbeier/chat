@@ -1,0 +1,6 @@
+.container{
+    display: flex;
+}
+.chat{
+    height: 50px;
+}
