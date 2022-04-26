@@ -1,7 +1,7 @@
-import * as express from 'express';
-import * as cookieParser from 'cookie-parser';
-import * as bodyParser from 'body-parser';
-import * as morgan from 'morgan';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
 /* import cors from 'cors'; */
 
 // coneccion de sockets
@@ -13,9 +13,12 @@ var io = require('socket.io')(app, {
 	},
 });
 
+interface MessArgs {
+	text: string,
+	id: string
+}
 
-
-io.on('connection', (socket) => {
+io.on('connection', (socket: any) => {
 	
 	const {idRoom} = socket.handshake.query;
 	socket.join(idRoom);
@@ -23,13 +26,13 @@ io.on('connection', (socket) => {
 	
     io.to(idRoom).emit('NEW_CONNECTION')
     
-	socket.on('NEW_MESSAGE', ({text, name}) => {
+	socket.on('NEW_MESSAGE', (obj: MessArgs) => {
 		//alguien envia un nuevo mensaje
 		/* const {text, name, email} = data; */ 
-		io.to(idRoom).emit('NEW_MESSAGE', {text, name});
+		io.to(idRoom).emit('NEW_MESSAGE', obj);
 	});
 	
-	socket.on('DISCONNECT', (id) => {
+	socket.on('DISCONNECT', (id: string) => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
 		io.to(idRoom).emit('DISCONNECT', id);
@@ -71,7 +74,7 @@ server.use((req, res, next) => {
 });
 
 // Error catching endware.
-server.use((err, req, res, next) => {
+server.use((err: any, req: any, res: any, next: any) => {
 	// eslint-disable-line no-unused-vars
 	const status = err.status || 500;
 	const message = err.message || err;
@@ -83,6 +86,6 @@ server.use((err, req, res, next) => {
 server.use(cookieParser('secret'));
 
 
-app.listen('http://localhost:3001', async () => {
+app.listen('http://localhost:3001', () => {
 	console.log('%s listening at 3001'); // eslint-disable-line no-console
 });

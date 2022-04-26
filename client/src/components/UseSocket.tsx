@@ -38,7 +38,7 @@ function useSocket(idRoom: string) {
             })
 
             return () =>{
-                socketIoRef.current?.emit("DISCONNECT")
+                socketIoRef.current?.emit("DISCONNECT", socketIoRef.current?.id)
                 socketIoRef.current?.disconnect();
             }
     }, [])

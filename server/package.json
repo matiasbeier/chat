@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/app.ts",
+    "start": "ts-node ./src/app.ts",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Matias Beier",
