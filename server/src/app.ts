@@ -86,6 +86,6 @@ server.use((err: any, req: any, res: any, next: any) => {
 server.use(cookieParser('secret'));
 
 
-app.listen('http://localhost:3001', () => {
+app.listen(3001, () => {
 	console.log('%s listening at 3001'); // eslint-disable-line no-console
 });
