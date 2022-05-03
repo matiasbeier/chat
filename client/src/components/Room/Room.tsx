@@ -22,7 +22,7 @@ const Room = () => {
 
     useEffect(() =>{
         messages.text &&
-    setListMessages([...listMessages, messages])
+    setListMessages([messages, ...listMessages])
     }, [messages])
 
     function handleMessage(e: ChangeEvent<HTMLInputElement>){

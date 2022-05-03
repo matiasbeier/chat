@@ -3,24 +3,25 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.041);
 }
 .containerChat {
     height: 24.5rem;
     width: 22rem;
     padding-left: .5rem;
     padding-top: .5rem;
+    padding-bottom: .5rem;
     border-radius: .75rem;
     border: 3px solid rgb(185, 173, 173);
 }
 .chat{
     overflow-y: scroll;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: 20rem;
     background-color: rgb(233, 241, 238);
     width: 20rem;
-    max-height: 20rem;
     padding-left: .5rem;
     padding-right: .5rem;
     border-radius: .75rem .75rem 0 0;
@@ -41,7 +42,7 @@
     border-radius: 1rem;
 }
 .containerSendMessages {
-    width: 21.5rem;
+    width: 95%;
     height: 2rem;
     background-color: rgb(233, 241, 238);
     border-radius: 0 0 .75rem .75rem;
@@ -58,6 +59,7 @@
     width: 16rem;
     height: 1.5rem;
     border-radius: 3rem;
+    font-size: 1.2rem;
 }
 .button {
     font-size: 1.5rem;
@@ -66,4 +68,32 @@
     margin-left: .25rem;
     padding-top: .25rem;
     cursor: pointer;
+    background-color: rgb(20, 131, 20);
+    color: rgb(225, 241, 226);
+    border: 1px solid transparent;
+    transition: .25s;
+}
+.button:hover {
+    background-color: rgb(42, 172, 42);
+    color: #fff;
+}
+
+@media screen and (max-width: 450px) {
+    .containerChat {
+        height: 100vh;
+        width: 100%;
+        align-items: flex-end;
+        border: 1px solid transparent;
+        background-color: transparent;
+        padding: 0;
+    }
+    .chat{
+        height: 90vh;
+        width: 100%;
+        background-color: transparent;
+    }
+    .containerSendMessages {
+        width: 100%;
+        height: 2rem;
+    }
 }
